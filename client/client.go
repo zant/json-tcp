@@ -10,13 +10,11 @@ import (
   "github.com/zant/json-tcp/common"
 )
 
-const agilityChannel = "agility as its finest"
-
 func main() {
   var wg sync.WaitGroup
   message := common.Message{
-    Channel: agilityChannel,
-    Body:    "Heyy",
+    Channel: "Random",
+    Body:    "Heyyyy",
   }
 
   if len(os.Args) != 2 {
