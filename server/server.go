@@ -29,8 +29,8 @@ func main() {
     var message common.Message
     decoder.Decode(&message)
     fmt.Println(message.String())
-    time.Sleep(1000 * time.Nanosecond)
     encoder.Encode(message)
+    time.Sleep(1000 * time.Millisecond)
 
     conn.Close()
   }

@@ -26,7 +26,7 @@ func main() {
   conn, err := net.Dial("tcp", service)
   common.CheckError(err)
 
-  go sendAndPrint(&message, &conn, &wg)
+  go sendAndPrint(message, conn, &wg)
 
   fmt.Printf("Immediatly\n")
 
@@ -34,12 +34,12 @@ func main() {
   os.Exit(0)
 }
 
-func sendAndPrint(m *common.Message, conn *net.Conn, wg *sync.WaitGroup) {
+func sendAndPrint(m common.Message, conn net.Conn, wg *sync.WaitGroup) {
   wg.Add(1)
-  encoder := json.NewEncoder(*conn)
-  decoder := json.NewDecoder(*conn)
+  encoder := json.NewEncoder(conn)
+  decoder := json.NewDecoder(conn)
 
-  encoder.Encode(*m)
+  encoder.Encode(m)
   var newMessage common.Message
   decoder.Decode(&newMessage)
   fmt.Println(newMessage.String())

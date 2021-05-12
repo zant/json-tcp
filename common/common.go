@@ -11,7 +11,7 @@ type Message struct {
 }
 
 func (m Message) String() string {
-  s := "Message send to: " + m.Channel + " with content " + m.Body
+  s := "Message send to: " + m.Channel + "\nWith content: " + m.Body
   return s
 }
 
